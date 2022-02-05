@@ -1,0 +1,26 @@
+﻿@using Puzzles.Bl.NumberToString.Models
+@model NumberToStringHomeModel
+
+@{
+    var guid = Guid.NewGuid();
+    var heading = $"Number to String";
+    var desc = $"Write some code that will accept an amount and convert it to the appropriate string representation.";
+    var example = $"Example: Convert 2523.04 to \"Two thousand five hundred twenty-three and 04/100dollars\"";
+
+    var formdivid = $"divformid-{guid}";
+   
+    var calculateModel = new NumberToStringCalculateModel();
+}
+
+<div class="border">
+    <h1> @heading</h1>
+    <p>@desc"</p>
+    <i>@example</i>
+</div>
+
+<br>
+
+
+<div>
+    @await Html.PartialAsync("_NumberToStringForm",calculateModel)
+</div>

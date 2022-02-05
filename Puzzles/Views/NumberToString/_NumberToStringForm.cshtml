@@ -1,0 +1,44 @@
+﻿@using Puzzles.Bl.NumberToString.Models
+@model NumberToStringCalculateModel
+
+@{
+    var guid = Guid.NewGuid();
+    var containerid = $"divcontainer";
+    var resultdivid = $"divresults-{guid}";
+}
+
+<div id="@containerid">
+
+    <div class="row">
+        <div class="col-md-4">
+
+
+                <form asp-controller="NumberToString"
+                      asp-action="SubmitNumberToString"
+                      method="POST"
+                      class="form-horizontal"
+                      role="form"
+                      data-ajax="true"
+                      data-ajax-method="POST"
+                      data-ajax-mode="replace"
+                      data-ajax-update="#@containerid">
+          
+            <div class="row left-right-padding" id="spForm">
+                <input type="text" id="document" asp-for="Input">
+                    <button type="submit" class="btn btn-default BtnGreen">Submit</button>
+            </div>  
+            </form>
+        </div>
+    </div>
+
+
+
+</div>
+
+@if (Model.Saved)
+{
+    <div id="@resultdivid">
+        <p>Success! Bro you did it.</p>
+        <p>You submitted: @Model.Input</p>
+    </div>
+}
