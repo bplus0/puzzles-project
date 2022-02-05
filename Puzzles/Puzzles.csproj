@@ -20,4 +20,8 @@
     <ProjectReference Include="..\Puzzles.Bl\Puzzles.Bl.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Exceptions\" />
+  </ItemGroup>
+
 </Project>

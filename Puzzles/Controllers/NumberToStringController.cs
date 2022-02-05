@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Puzzles.Bl.Exceptions;
 using Puzzles.Bl.NumberToString;
 using Puzzles.Bl.NumberToString.Models;
-using Puzzles.Exceptions;
 using Puzzles.Models;
 
 namespace Puzzles.Controllers
@@ -32,7 +32,7 @@ namespace Puzzles.Controllers
         var model = new NumberToStringHomeModel();
         return View("Index_NumberToString", model);
       }
-      catch (AppException ax)
+      catch (PuzzlesApplicationException ax)
       {
         msg = ax.Message;
       }
@@ -51,25 +51,25 @@ namespace Puzzles.Controllers
     #region Form
     [HttpPost]
     [Route("projects/numbertostring/calculate/_submit")]
-    public ActionResult SubmitNumberToString(NumberToStringCalculateModel model)
+    public async Task<ActionResult> SubmitNumberToString(NumberToStringCalculateModel model)
     {
 
       try
       {
-        model.Saved = true;
-
+        var converted = await _bl.SubmitNumberToStringConvertModel(model).ConfigureAwait(false);
+        converted.Saved = true;
         return PartialView("_NumberToStringForm", model);
       }
-      catch (AppException ax)
+      catch (PuzzlesApplicationException ax)
       {
-        ModelState.AddModelError("", ax.AppExceptionMessage);
+        ModelState.AddModelError("", ax.Message);
       }
       catch (Exception ex)
       {
         ModelState.AddModelError("", ex.Message);
         //_log.LogWarning(ex.Message);
       }
-      return PartialView("_ErrorMessage", new StringModel("An Error Has Occurred"));
+      return PartialView("_NumberToStringForm", model);
     }
 
     #endregion
