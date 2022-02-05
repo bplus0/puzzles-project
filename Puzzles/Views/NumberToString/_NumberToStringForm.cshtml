@@ -12,7 +12,16 @@
     <div class="row">
         <div class="col-md-4">
 
-             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <i class="small bluetext">
+                I was conflicted if i should send a string so the user could
+                send formatted numbers. I was torn and decided to go with a decimal. I can see the argument either way
+            </i>
+
+            <br />
+            <br />
+
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <form asp-controller="NumberToString"
                   asp-action="SubmitNumberToString"
@@ -24,8 +33,17 @@
                   data-ajax-mode="replace"
                   data-ajax-update="#@containerid">
 
+
+
+
                 <div class="form-group">
+
+
                     <label for="exampleInputEmail1">Enter A Number</label>
+
+
+
+
                     <input type="number"
                            asp-for="Input"
                            step=".01"
@@ -50,6 +68,7 @@
 
 @if (Model.Saved)
 {
+    <br />
     <div id="@resultdivid">
         <p>Success! Bro you did it.</p>
         <p>You submitted: @Model.Input</p>

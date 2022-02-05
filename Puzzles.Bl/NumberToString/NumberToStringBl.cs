@@ -25,9 +25,9 @@ namespace Puzzles.Bl.NumberToString
     public async Task<NumberToStringCalculateModel> SubmitNumberToStringConvertModel(NumberToStringCalculateModel model)
     {
 
-      if (model.Input < 0)
+      if (model.Input <= 0)
       {
-        throw new PuzzlesApplicationException($"We can throw exceptions. I would prefer if you kept these to positive numbers.");
+        throw new PuzzlesApplicationException($"We can throw exceptions. I would prefer if you kept these to positive numbers. GREATER than zero");
       }
 
 
