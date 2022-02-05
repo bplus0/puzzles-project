@@ -6,5 +6,7 @@
     public bool Saved { get; set; }
     public bool PalindromeFound { get; set; }
     public string ReturnMessage { get; set; }
+
+    public string PreviousGuesses { get; set; }
   }
 }

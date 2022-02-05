@@ -1,4 +1,5 @@
-﻿@using Puzzles.Bl.NumberToString.Models
+﻿@using Puzzles.Bl.Extensions
+@using Puzzles.Bl.NumberToString.Models
 @using Puzzles.Bl.PalindromeChecker.Models
 @model PalindromeCheckerModel
 
@@ -35,7 +36,8 @@
 
 
         <div class="form-group">
-
+            @*<input asp-for="PreviousGuesses" type="hidden" />*@
+        @*    @Html.TextBoxFor(x=> x.PreviousGuesses)*@
 
             <label for="exampleInputEmail1">Enter A Number</label>
 
@@ -49,12 +51,26 @@
         </div>
 
 
+
         <button type="submit" class="btn btn-primary">Submit</button>
 
 
 
     </form>
 
+
+
+    <br />
+@*    <div>
+        @if (!Model.PreviousGuesses.IsNullOrWhiteSpace())
+        {
+            <div>
+                <p>Previous guesses</p>
+
+                <p>@Model.PreviousGuesses</p>
+            </div>
+        }
+    </div>*@
 
 
 </div>

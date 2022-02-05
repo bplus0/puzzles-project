@@ -18,8 +18,17 @@ namespace Puzzles.Bl.PalindromeChecker
         throw new PuzzlesApplicationException($"Please enter a positive number greater than zero");
       }
 
-      var numbertocheck = model.NumberToCheck;
+      //first guess
+      if (model.PreviousGuesses.IsNullOrWhiteSpace())
+      {
+        model.PreviousGuesses = $"{model.NumberToCheck}, ";
+      }
+      else
+      {
+        model.PreviousGuesses = $"{model.PreviousGuesses} {model.NumberToCheck}, ";
+      }
 
+      var numbertocheck = model.NumberToCheck;
       var reversednumber = model.NumberToCheck.ReverseInt();
 
 
@@ -33,6 +42,9 @@ namespace Puzzles.Bl.PalindromeChecker
         model.ReturnMessage = "No palindrome. Try again";
         model.PalindromeFound = false;
       }
+
+
+
 
       return model;
     }

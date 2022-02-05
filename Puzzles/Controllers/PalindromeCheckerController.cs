@@ -52,9 +52,9 @@ namespace Puzzles.Controllers
 
       try
       {
-        var converted = await _bl.SubmitCheckPalindromeCheckerModelAsync(model).ConfigureAwait(false);
-        converted.Saved = true;
-        return PartialView("_PalindromeCheckerForm", model);
+        var submitted = await _bl.SubmitCheckPalindromeCheckerModelAsync(model).ConfigureAwait(false);
+        submitted.Saved = true;
+        return PartialView("_PalindromeCheckerForm", submitted);
       }
       catch (PuzzlesApplicationException ax)
       {
