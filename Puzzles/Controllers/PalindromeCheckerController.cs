@@ -1,28 +1,28 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Puzzles.Bl.Exceptions;
-using Puzzles.Bl.NumberToString;
 using Puzzles.Bl.NumberToString.Models;
+using Puzzles.Bl.PalindromeChecker;
+using Puzzles.Bl.PalindromeChecker.Models;
 using Puzzles.Models;
 
 namespace Puzzles.Controllers
 {
-  public class NumberToStringController : Controller
+  public class PalindromeCheckerController : Controller
   {
-
     private readonly ILogger<HomeController> _logger;
-    private readonly INumberToStringBl _bl;
-    public NumberToStringController(ILogger<HomeController> logger, INumberToStringBl bl)
+    private readonly IPalindromeCheckerBl _bl;
+    public PalindromeCheckerController(ILogger<HomeController> logger, IPalindromeCheckerBl bl)
     {
       _logger = logger;
       _bl = bl;
     }
 
 
-    #region Number To String Page
+
 
     [HttpGet]
-    [Route("projects/numbertostring/home")]
-    public ActionResult NumberToStringHome()
+    [Route("projects/palindromechecker/home")]
+    public ActionResult PalindromeCheckerPage()
     {
 
       var msg = "";
@@ -30,7 +30,7 @@ namespace Puzzles.Controllers
       {
 
         var model = new NumberToStringHomeModel();
-        return View("Index_NumberToString", model);
+        return View("Index_PalindromeChecker", model);
       }
       catch (PuzzlesApplicationException ax)
       {
@@ -45,20 +45,16 @@ namespace Puzzles.Controllers
 
     }
 
-
-
-
-    #region Form
     [HttpPost]
-    [Route("projects/numbertostring/convert/_submit")]
-    public async Task<ActionResult> SubmitNumberToString(NumberToStringConvertModel model)
+    [Route("projects/palindromechecker/_submit")]
+    public async Task<ActionResult> SubmitPalindromeCheck(PalindromeCheckerModel model)
     {
 
       try
       {
-        var converted = await _bl.SubmitNumberToStringConvertModelAsync(model).ConfigureAwait(false);
+        var converted = await _bl.SubmitCheckPalindromeCheckerModelAsync(model).ConfigureAwait(false);
         converted.Saved = true;
-        return PartialView("_NumberToStringForm", model);
+        return PartialView("_PalindromeCheckerForm", model);
       }
       catch (PuzzlesApplicationException ax)
       {
@@ -69,14 +65,9 @@ namespace Puzzles.Controllers
         ModelState.AddModelError("", ex.Message);
         //_log.LogWarning(ex.Message);
       }
-      return PartialView("_NumberToStringForm", model);
+      return PartialView("_PalindromeCheckerForm", model);
     }
 
-    #endregion
-
-
-
-    #endregion
 
 
 

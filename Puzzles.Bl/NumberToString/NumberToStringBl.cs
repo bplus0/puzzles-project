@@ -22,7 +22,7 @@ namespace Puzzles.Bl.NumberToString
     /// </summary>
     /// <param name="model"></param>
     /// <returns></returns>
-    public async Task<NumberToStringConvertModel> SubmitNumberToStringConvertModel(NumberToStringConvertModel model)
+    public async Task<NumberToStringConvertModel> SubmitNumberToStringConvertModelAsync(NumberToStringConvertModel model)
     {
 
       if (model.Input <= 0)

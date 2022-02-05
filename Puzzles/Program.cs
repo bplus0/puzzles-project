@@ -1,5 +1,6 @@
 using AspNetCore.Unobtrusive.Ajax;
 using Puzzles.Bl.NumberToString;
+using Puzzles.Bl.PalindromeChecker;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
 builder.Services.AddScoped<INumberToStringBl, NumberToStringBl>();
+builder.Services.AddScoped<IPalindromeCheckerBl, PalindromeCheckerBl>();
 
 var app = builder.Build();
 

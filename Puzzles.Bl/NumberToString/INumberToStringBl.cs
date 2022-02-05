@@ -7,7 +7,7 @@ namespace Puzzles.Bl.NumberToString
 
     #region Convert Number To String
     string ReturnHello();
-    Task<NumberToStringConvertModel> SubmitNumberToStringConvertModel(NumberToStringConvertModel model);
+    Task<NumberToStringConvertModel> SubmitNumberToStringConvertModelAsync(NumberToStringConvertModel model);
 
     #endregion
   }

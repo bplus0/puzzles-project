@@ -1,0 +1,55 @@
+﻿@using Puzzles.Bl.NumberToString.Models
+@using Puzzles.Bl.PalindromeChecker.Models
+@model NumberToStringHomeModel
+
+@{
+    var guid = Guid.NewGuid();
+    var heading = $"Palindrome Checker";
+    var desc = $"Palindrome: A word, phrase, or sequence that reads the same backward as forward";
+    var containerid = $"divcontainer-{guid}";
+
+    var objectivetext = $"Please implement a function that checks whether a positive number is a palindrome or not. For example,121 is a palindrome, but 123 is not.";
+}
+
+
+<div id="@containerid">
+
+    <div class="">
+        <div class=" text-center">
+            <h1>@heading</h1>
+            <p>@desc</p>
+            <hr />
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Objective</h2>
+                <p class="small">@objectivetext</p>
+            </div>
+
+
+            <div class="col-md-6">
+                @await Html.PartialAsync("_PalindromeCheckerForm", new PalindromeCheckerModel())
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+    </div>
+
+@*    <script>
+                $(document).ready(function(){
+           $(".active").removeClass("active");
+           $("#link-palindromechecker").addClass("active");
+        });
+    </script>*@
+
+</div>
