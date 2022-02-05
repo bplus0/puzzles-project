@@ -50,8 +50,8 @@ namespace Puzzles.Controllers
 
     #region Form
     [HttpPost]
-    [Route("projects/numbertostring/calculate/_submit")]
-    public async Task<ActionResult> SubmitNumberToString(NumberToStringCalculateModel model)
+    [Route("projects/numbertostring/convert/_submit")]
+    public async Task<ActionResult> SubmitNumberToString(NumberToStringConvertModel model)
     {
 
       try

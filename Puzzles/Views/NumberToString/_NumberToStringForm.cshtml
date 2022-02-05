@@ -1,5 +1,5 @@
 ﻿@using Puzzles.Bl.NumberToString.Models
-@model NumberToStringCalculateModel
+@model NumberToStringConvertModel
 
 @{
     var guid = Guid.NewGuid();
@@ -14,7 +14,8 @@
 
             <i class="small bluetext">
                 I was conflicted if i should send a string so the user could
-                send formatted numbers. I was torn and decided to go with a decimal. I can see the argument either way
+                send formatted numbers. I was torn and decided to go with a decimal. I can see the argument either way.
+                The string would need more cleansing, but rounding decimal issues wouldn't exist.
             </i>
 
             <br />
@@ -70,7 +71,7 @@
 {
     <br />
     <div id="@resultdivid">
-        <p>Success! Bro you did it.</p>
         <p>You submitted: @Model.Input</p>
+        <p>Your Result: @Model.Result</p>
     </div>
 }

@@ -2,13 +2,13 @@
 
 namespace Puzzles.Bl.NumberToString
 {
-    public interface INumberToStringBl
-    {
+  public interface INumberToStringBl
+  {
 
-        #region Convert Number To String
-        string ReturnHello();
-        Task<NumberToStringCalculateModel> SubmitNumberToStringConvertModel(NumberToStringCalculateModel model);
+    #region Convert Number To String
+    string ReturnHello();
+    Task<NumberToStringConvertModel> SubmitNumberToStringConvertModel(NumberToStringConvertModel model);
 
-        #endregion
-    }
+    #endregion
+  }
 }
