@@ -66,6 +66,7 @@
     </script>
 
     @Html.RenderUnobtrusiveAjaxScript()
+    @await Html.PartialAsync("_LayoutLoadPartial")
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

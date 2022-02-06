@@ -7,8 +7,10 @@
     var guid = Guid.NewGuid();
     var heading = $"Poker Hand Evaluator";
     var containerid = $"divcontainer-{guid}";
-
     var objectivetext = $"Write some code that will evaluate a poker hand and determine its rank.";
+
+    var pokertabledivid = $"divpokertable-{guid}";
+    var dealcardsurl = Url.Action("DealPokerHands", "PokerHandEvaluator", new { });
 }
 
 
@@ -17,31 +19,24 @@
     <div class="">
         <div class=" text-center">
             <h1>@heading</h1>
-     
             <hr />
         </div>
     </div>
 
-    <div class="container">
-        <!-- Example row of columns -->
-        <div class="row">
-            <div class="col-md-6">
-                <h2>Objective</h2>
-                <p class="small">@objectivetext</p>
-            </div>
 
 
-  
+    <button type="button"
+            class="btn btn-danger"
+            onclick="window.LayoutLoadPartial('@pokertabledivid', '@dealcardsurl')">
+        Deal Some Cards!
+    </button>
+
+    <br />
+    <br />
 
 
-        </div>
+    <div id="@pokertabledivid"></div>
 
-
-
-
-
-
-    </div>
 
 
 </div>

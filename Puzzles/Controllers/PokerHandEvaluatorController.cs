@@ -45,5 +45,33 @@ namespace Puzzles.Controllers
 
 
 
+
+    [HttpGet]
+    [Route("projects/pokerhandevaluator/_dealhands")]
+    public async Task<ActionResult> DealPokerHands()
+    {
+
+      var msg = "";
+      try
+      {
+
+        var model = await _bl.GetTableCardsAsync().ConfigureAwait(false);
+        return PartialView("_PokerRoom", model);
+      }
+      catch (PuzzlesApplicationException ax)
+      {
+        msg = ax.Message;
+      }
+      catch (Exception ex)
+      {
+        ModelState.AddModelError("", ex.Message);
+        //_log.LogError(" - ", ex.Message);
+      }
+      return PartialView("_ErrorMessage", new StringModel(msg));
+
+    }
+
+
+
   }
 }

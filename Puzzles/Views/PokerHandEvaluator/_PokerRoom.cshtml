@@ -1,0 +1,66 @@
+﻿@using Puzzles.Bl.NumberToString.Models
+@using Puzzles.Bl.PalindromeChecker.Models
+@using Puzzles.Bl.PokerHandEvaluator.Models
+@model PokerHandEvaluatorHomeModel
+
+@{
+    var guid = Guid.NewGuid();
+    var containerid = $"divcontainer-{guid}";
+
+}
+
+
+<div id="@containerid">
+    <div class="container">
+
+
+        <div class="row align-items-start">
+            <div class="col">
+                @await Html.PartialAsync("_PokerPlayer", Model.PokerPlayers[0])
+            </div>
+
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+
+                    @await Html.PartialAsync("_PokerPlayer", Model.PokerPlayers[1])
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    @await Html.PartialAsync("_PokerPlayer", Model.PokerPlayers[2])
+                </div>
+            </div>
+        </div>
+
+
+        @await Html.PartialAsync("_PokerTable", Model)
+
+        <div class="row align-items-end">
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    @await Html.PartialAsync("_PokerPlayer", Model.PokerPlayers[3])
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    @await Html.PartialAsync("_PokerPlayer", Model.PokerPlayers[4])
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    @await Html.PartialAsync("_PokerPlayer", Model.PokerPlayers[5])
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br />
+
+    <div class="text-center">
+        <a href="#" class="btn btn-secondary text-center btn-lg">Who Won?</a>
+    </div>
+
+@*    <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>*@
+</div>
+

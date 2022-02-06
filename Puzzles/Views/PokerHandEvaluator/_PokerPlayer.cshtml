@@ -1,0 +1,24 @@
+﻿@using Puzzles.Bl.NumberToString.Models
+@using Puzzles.Bl.PalindromeChecker.Models
+@using Puzzles.Bl.PokerHandEvaluator.Models
+@model PokerPlayerModel
+
+@{
+    var guid = Guid.NewGuid();
+    var containerid = $"divcontainer-{guid}";
+
+}
+
+
+<div id="@containerid">
+    <div class="card" style="width: 18rem;">
+
+        <div class="card-body">
+            <h5 class="card-title">@Model.PlayerName</h5>
+            <p class="card-text">AA</p>
+
+        </div>
+    </div>
+
+</div>
+

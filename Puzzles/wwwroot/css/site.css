@@ -25,3 +25,8 @@ body {
 .bluetext {
     color: darkslateblue;
 }
+
+
+#pokertable{
+    background-color:darkgreen;
+}
