@@ -36,18 +36,18 @@
 
 
         <div class="form-group">
-            @*<input asp-for="PreviousGuesses" type="hidden" />*@
-        @*    @Html.TextBoxFor(x=> x.PreviousGuesses)*@
 
-            <label for="exampleInputEmail1">Enter A Number</label>
-
-
+            <label asp-for="NumberToCheck"></label>
             <input type="number"
                    asp-for="NumberToCheck"
                    min="0"
+                   max="1000000000"
                    class="form-control"
-                   id="inputNumberInput"
                    placeholder="Enter Any Number...">
+
+
+            <input type="hidden" asp-for="PreviousGuesses" value="@Model.PreviousGuesses">
+
         </div>
 
 
@@ -61,16 +61,16 @@
 
 
     <br />
-@*    <div>
+    <div>
         @if (!Model.PreviousGuesses.IsNullOrWhiteSpace())
         {
             <div>
-                <p>Previous guesses</p>
+                <span>Previous Guesses:</span> <br>
 
-                <p>@Model.PreviousGuesses</p>
+                <span>@Model.PreviousGuesses</span>
             </div>
         }
-    </div>*@
+    </div>
 
 
 </div>

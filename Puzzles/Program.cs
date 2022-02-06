@@ -1,6 +1,7 @@
 using AspNetCore.Unobtrusive.Ajax;
 using Puzzles.Bl.NumberToString;
 using Puzzles.Bl.PalindromeChecker;
+using Puzzles.Bl.PokerHandEvaluator;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,7 @@ builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
 builder.Services.AddScoped<INumberToStringBl, NumberToStringBl>();
 builder.Services.AddScoped<IPalindromeCheckerBl, PalindromeCheckerBl>();
+builder.Services.AddScoped<IPokerHandEvaluatorBl, PokerHandEvaluatorBl>();
 
 var app = builder.Build();
 

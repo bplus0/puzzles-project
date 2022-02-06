@@ -18,6 +18,12 @@ namespace Puzzles.Bl.PalindromeChecker
         throw new PuzzlesApplicationException($"Please enter a positive number greater than zero");
       }
 
+      if (model.NumberToCheck > 1000000000)
+      {
+        throw new PuzzlesApplicationException($"This is a very large number. For the sake of this exercise. Let's keep it less than a trillion");
+
+      }
+
       //first guess
       if (model.PreviousGuesses.IsNullOrWhiteSpace())
       {
