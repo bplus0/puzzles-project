@@ -28,6 +28,24 @@ namespace Puzzles.Bl.PokerHandEvaluator
       result.PokerPlayers.Add(CreateNewPokerPlayer("Turner"));
 
 
+      var newdeckofcards = DeckOfCardsExtensions.LoadNewDeck();
+
+      foreach (var card in newdeckofcards)
+      {
+
+      }
+
+
+
+      var benscards = new List<PokerCard>();
+      var random = new Random();
+      int randomindex = random.Next(newdeckofcards.Count);
+
+      benscards.Add(newdeckofcards[randomindex]);
+      newdeckofcards.RemoveAt(randomindex);
+
+
+
       return result;
     }
 

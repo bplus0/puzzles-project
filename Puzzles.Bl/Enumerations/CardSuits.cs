@@ -2,7 +2,7 @@
 
 namespace Puzzles.Bl.Enumerations
 {
-  public enum Suits
+  public enum CardSuits
   {
     [Display(Name = "Clubs")] Clubs = 1,
     [Display(Name = "Diamonds")] Diamonds = 2,
