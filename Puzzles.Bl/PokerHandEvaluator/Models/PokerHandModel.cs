@@ -1,7 +1,11 @@
-﻿namespace Puzzles.Bl.PokerHandEvaluator.Models
+﻿using Puzzles.Bl.Enumerations;
+
+namespace Puzzles.Bl.PokerHandEvaluator.Models
 {
-  public class PokerHandModel
-  {
-    public List<PokerCard> Cards { get; set; } = new List<PokerCard>();
-  }
+	public class PokerHandModel
+	{
+		public List<PokerCard> Cards { get; set; } = new List<PokerCard>();
+
+		public AvailablePokerHands HandType { get; set; }
+	}
 }

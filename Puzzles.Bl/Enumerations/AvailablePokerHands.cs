@@ -14,5 +14,6 @@ namespace Puzzles.Bl.Enumerations
 		[Display(Name = "Four of a Kind")] FourOfAKind = 8,
 		[Display(Name = "Straight Flush")] StraightFlush = 9,
 		[Display(Name = "Royal Flush")] RoyalFlush = 10,
+		//[Display(Name = "Royal Flush")] RoyalFlush = 10,
 	}
 }

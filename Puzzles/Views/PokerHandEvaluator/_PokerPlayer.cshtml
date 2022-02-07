@@ -20,16 +20,19 @@
             @foreach (var c in Model.PokerHand.Cards)
             {
                 var label = $"{c.CardValue}";
-                var prettylabel =  $"{CardSuitExtensions.PrettyDisplayname(c.CardSuit)}";
+                var prettylabel = $"{CardSuitExtensions.PrettyDisplayname(c.CardSuit)}";
                 var colorstyle = c.CardSuit == CardSuits.Hearts || c.CardSuit == CardSuits.Diamonds ? "color: red" : "color: black";
 
 
                 <p class="card-text"
-                     style="@colorstyle">
+               style="@colorstyle">
                     @label @Html.Raw(prettylabel)
                 </p>
-            }
 
+            }
+            <hr />
+
+            <b>@Model.PokerHand.HandType.GetDisplayName()</b>
 
         </div>
     </div>

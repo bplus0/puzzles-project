@@ -1,4 +1,7 @@
-﻿using Puzzles.Bl.PokerHandEvaluator.Models;
+﻿using Puzzles.Bl.Enumerations;
+using Puzzles.Bl.Exceptions;
+using Puzzles.Bl.Extensions;
+using Puzzles.Bl.PokerHandEvaluator.Models;
 
 namespace Puzzles.Bl.PokerHandEvaluator
 {
@@ -38,7 +41,8 @@ namespace Puzzles.Bl.PokerHandEvaluator
 
 			foreach (var player in players)
 			{
-				//var
+				var handtype = _AnalyzeHand(player.PokerHand);
+				player.PokerHand.HandType = handtype;
 			}
 
 
@@ -127,8 +131,68 @@ namespace Puzzles.Bl.PokerHandEvaluator
 
 		#region Rank Cards / Hand
 
-		private void _AnalyzeHand()
+		private AvailablePokerHands _AnalyzeHand(PokerHandModel hand)
 		{
+			if (hand.Cards.Count != 5)
+			{
+				throw new PuzzlesApplicationException($"Insufficient Cards For Player ");
+			}
+
+			//this will be ugly
+
+
+			if (hand.Cards.IsRoyalFlush())
+			{
+				return AvailablePokerHands.RoyalFlush;
+			}
+
+
+
+			if (hand.Cards.IsStraightFlush())
+			{
+				return AvailablePokerHands.StraightFlush;
+			}
+
+			if (hand.Cards.IsFourOfAKind())
+			{
+				return AvailablePokerHands.FourOfAKind;
+			}
+
+			if (hand.Cards.IsFullHouse())
+			{
+				return AvailablePokerHands.FullHouse;
+			}
+
+			if (hand.Cards.IsFlush())
+			{
+				return AvailablePokerHands.Flush;
+			}
+
+
+			if (hand.Cards.IsStraight())
+			{
+				return AvailablePokerHands.Straight;
+			}
+
+			if (hand.Cards.IsThreeOfAKind())
+			{
+				return AvailablePokerHands.ThreeOfAKind;
+			}
+
+
+			if (hand.Cards.IsTwoPair())
+			{
+				return AvailablePokerHands.TwoPair;
+			}
+
+
+			if (hand.Cards.IsPair())
+			{
+				return AvailablePokerHands.Pair;
+			}
+
+			return AvailablePokerHands.HighCard;
+			//throw new PuzzlesApplicationException($"Unable to figure out the hand type.");
 
 		}
 
