@@ -9,11 +9,11 @@ namespace Puzzles.Controllers
 {
   public class PalindromeCheckerController : Controller
   {
-    private readonly ILogger<HomeController> _logger;
+    //private readonly ILogger<HomeController> _logger;
     private readonly IPalindromeCheckerBl _bl;
-    public PalindromeCheckerController(ILogger<HomeController> logger, IPalindromeCheckerBl bl)
+    public PalindromeCheckerController(IPalindromeCheckerBl bl)
     {
-      _logger = logger;
+      //_logger = logger;
       _bl = bl;
     }
 
@@ -38,7 +38,7 @@ namespace Puzzles.Controllers
       }
       catch (Exception ex)
       {
-        ModelState.AddModelError("", ex.Message);
+        msg = "An error has occured";
         //_log.LogError(" - ", ex.Message);
       }
       return View("Error", new StringModel(msg));

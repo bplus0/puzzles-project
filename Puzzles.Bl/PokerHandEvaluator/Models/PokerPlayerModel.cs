@@ -3,6 +3,6 @@
   public class PokerPlayerModel
   {
     public string PlayerName { get; set; }
-    public PokerHandModel PokerHand { get; set; }
+    public PokerHandModel PokerHand { get; set; } = new PokerHandModel();
   }
 }

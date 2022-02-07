@@ -1,6 +1,7 @@
 ﻿@using Puzzles.Bl.NumberToString.Models
 @using Puzzles.Bl.PalindromeChecker.Models
 @using Puzzles.Bl.PokerHandEvaluator.Models
+@using Puzzles.Bl.Extensions
 @model PokerPlayerModel
 
 @{
@@ -15,7 +16,13 @@
 
         <div class="card-body">
             <h5 class="card-title">@Model.PlayerName</h5>
-            <p class="card-text">AA</p>
+            @foreach (var c in Model.PokerHand.Cards)
+            {
+                var label = $"{c.CardValue} {c.CardSuit}";
+
+                <p class="card-text">@label</p>
+            }
+
 
         </div>
     </div>

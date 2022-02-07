@@ -2,6 +2,6 @@
 {
   public class PokerHandModel
   {
-    public List<PokerCard> Cards { get; set; }
+    public List<PokerCard> Cards { get; set; } = new List<PokerCard>();
   }
 }

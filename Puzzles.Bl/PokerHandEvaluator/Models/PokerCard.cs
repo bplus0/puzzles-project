@@ -6,5 +6,7 @@ namespace Puzzles.Bl.PokerHandEvaluator.Models
   {
     public CardSuits CardSuit { get; set; }
     public CardValues CardValue { get; set; }
+
+    public string UniqueKey => $"{CardSuit}{CardValue}";
   }
 }

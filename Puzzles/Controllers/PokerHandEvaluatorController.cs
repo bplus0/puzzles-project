@@ -9,9 +9,9 @@ namespace Puzzles.Controllers
   public class PokerHandEvaluatorController : Controller
   {
 
-    private readonly ILogger<HomeController> _logger;
+    private readonly ILogger<PokerHandEvaluatorController> _logger;
     private readonly IPokerHandEvaluatorBl _bl;
-    public PokerHandEvaluatorController(ILogger<HomeController> logger, IPokerHandEvaluatorBl bl)
+    public PokerHandEvaluatorController(ILogger<PokerHandEvaluatorController> logger, IPokerHandEvaluatorBl bl)
     {
       _logger = logger;
       _bl = bl;
@@ -36,7 +36,7 @@ namespace Puzzles.Controllers
       }
       catch (Exception ex)
       {
-        ModelState.AddModelError("", ex.Message);
+        msg = "An error has occured";
         //_log.LogError(" - ", ex.Message);
       }
       return View("Error", new StringModel(msg));
@@ -64,8 +64,9 @@ namespace Puzzles.Controllers
       }
       catch (Exception ex)
       {
-        ModelState.AddModelError("", ex.Message);
-        //_log.LogError(" - ", ex.Message);
+        msg = "An error has occured";
+        //ModelState.AddModelError("", ex.Message);
+        _logger.LogError(" - ", ex.Message);
       }
       return PartialView("_ErrorMessage", new StringModel(msg));
 
