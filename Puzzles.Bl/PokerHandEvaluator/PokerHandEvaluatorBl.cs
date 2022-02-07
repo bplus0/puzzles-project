@@ -33,6 +33,15 @@ namespace Puzzles.Bl.PokerHandEvaluator
 			}
 
 
+			//now the cards have been dealt and we know they are unique. now need to decide who has the best hand
+
+
+			foreach (var player in players)
+			{
+				//var
+			}
+
+
 
 
 			result.PokerPlayers = players;
@@ -71,7 +80,7 @@ namespace Puzzles.Bl.PokerHandEvaluator
 
 
 
-		#region Cards
+		#region  Deal Cards
 		private void _GetPlayersPokerHand(PokerPlayerModel player, List<PokerCard> cards, List<PokerCard> takencards)
 		{
 			var availablecards = cards.Except(takencards).ToList();
@@ -114,6 +123,17 @@ namespace Puzzles.Bl.PokerHandEvaluator
 
 		#endregion
 
+
+
+		#region Rank Cards / Hand
+
+		private void _AnalyzeHand()
+		{
+
+		}
+
+
+		#endregion
 
 	}
 }

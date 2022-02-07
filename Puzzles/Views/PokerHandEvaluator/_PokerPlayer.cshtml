@@ -1,4 +1,5 @@
-﻿@using Puzzles.Bl.NumberToString.Models
+﻿@using Puzzles.Bl.Enumerations
+@using Puzzles.Bl.NumberToString.Models
 @using Puzzles.Bl.PalindromeChecker.Models
 @using Puzzles.Bl.PokerHandEvaluator.Models
 @using Puzzles.Bl.Extensions
@@ -18,9 +19,15 @@
             <h5 class="card-title">@Model.PlayerName</h5>
             @foreach (var c in Model.PokerHand.Cards)
             {
-                var label = $"{c.CardValue} {c.CardSuit}";
+                var label = $"{c.CardValue}";
+                var prettylabel =  $"{CardSuitExtensions.PrettyDisplayname(c.CardSuit)}";
+                var colorstyle = c.CardSuit == CardSuits.Hearts || c.CardSuit == CardSuits.Diamonds ? "color: red" : "color: black";
 
-                <p class="card-text">@label</p>
+
+                <p class="card-text"
+                     style="@colorstyle">
+                    @label @Html.Raw(prettylabel)
+                </p>
             }
 
 
