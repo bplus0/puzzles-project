@@ -32,7 +32,15 @@
             }
             <hr />
 
-            <b>@Model.PokerHand.HandType.GetDisplayName()</b>
+            @if (Model.PokerHand.HandType == AvailablePokerHands.HighCard)
+            {
+                <b>@Model.PokerHand.HighCardString</b>
+            }
+            else
+            {
+                <b>@Model.PokerHand.HandType.GetDisplayName()</b>
+            }
+
 
         </div>
     </div>

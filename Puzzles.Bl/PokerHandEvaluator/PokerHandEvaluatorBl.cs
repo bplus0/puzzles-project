@@ -81,13 +81,13 @@ namespace Puzzles.Bl.PokerHandEvaluator
 				//{
 				//	Console.WriteLine("hey");
 				//}
-				var handtype = _AnalyzeHand(player.PokerHand);
+				var handtype = _AvailablePokerHandByPokerHandModel(player.PokerHand);
 				player.PokerHand.HandType = handtype;
 
-				//if (player.PokerHand.HandType == AvailablePokerHands.HighCard)
-				//{
-				//	player.PokerHand.HighCardString = $"{player.PokerHand.Cards.Max()}"
-				//}
+				if (player.PokerHand.HandType == AvailablePokerHands.HighCard)
+				{
+					player.PokerHand.HighCardString = _HighCardDisplayString(player.PokerHand);
+				}
 
 			}
 
@@ -177,7 +177,7 @@ namespace Puzzles.Bl.PokerHandEvaluator
 
 		#region Rank Cards / Hand
 
-		private AvailablePokerHands _AnalyzeHand(PokerHandModel hand)
+		private AvailablePokerHands _AvailablePokerHandByPokerHandModel(PokerHandModel hand)
 		{
 			if (hand.Cards.Count != 5)
 			{
@@ -243,6 +243,13 @@ namespace Puzzles.Bl.PokerHandEvaluator
 		}
 
 
+
+		private string _HighCardDisplayString(PokerHandModel hand)
+		{
+			//var cards = hand.Cards.OrderBy(x => x.CardValue).ToList();
+			var biggestcard = hand.Cards.Max(x => x.CardValue);
+			return $"{biggestcard} High";
+		}
 		#endregion
 
 	}
