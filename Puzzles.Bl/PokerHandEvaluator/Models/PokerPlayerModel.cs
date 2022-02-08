@@ -4,6 +4,7 @@
 	{
 		public string PlayerName { get; set; }
 		public PokerHandModel PokerHand { get; set; } = new PokerHandModel();
+		public bool WinningHand { get; set; } = false;
 
 	}
 }

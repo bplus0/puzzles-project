@@ -8,6 +8,7 @@ namespace Puzzles.Bl.PokerHandEvaluator.Models
 
 		public AvailablePokerHands HandType { get; set; }
 
+		public int HandRank { get; set; }
 		public string HighCardString { get; set; }
 	}
 }

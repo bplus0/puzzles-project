@@ -81,13 +81,18 @@ namespace Puzzles.Bl.PokerHandEvaluator
 				//{
 				//	Console.WriteLine("hey");
 				//}
-				var handtype = _AvailablePokerHandByPokerHandModel(player.PokerHand);
-				player.PokerHand.HandType = handtype;
+				player.PokerHand.HandType = _GetHandTypeByHandModel(player.PokerHand);
 
 				if (player.PokerHand.HandType == AvailablePokerHands.HighCard)
 				{
 					player.PokerHand.HighCardString = _HighCardDisplayString(player.PokerHand);
 				}
+
+
+
+
+
+
 
 			}
 
@@ -177,7 +182,7 @@ namespace Puzzles.Bl.PokerHandEvaluator
 
 		#region Rank Cards / Hand
 
-		private AvailablePokerHands _AvailablePokerHandByPokerHandModel(PokerHandModel hand)
+		private AvailablePokerHands _GetHandTypeByHandModel(PokerHandModel hand)
 		{
 			if (hand.Cards.Count != 5)
 			{
