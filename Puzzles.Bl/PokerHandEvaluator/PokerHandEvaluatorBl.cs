@@ -27,54 +27,60 @@ namespace Puzzles.Bl.PokerHandEvaluator
 			var players = _LoadPokerPlayers();
 
 
-			////var newdeckofcards = DeckOfCardsExtensions.LoadNewDeck();
-			//var takencards = new List<PokerCard>();
-
-			//foreach (var player in players)
-			//{
-			//	_GetPlayersPokerHand(player, newdeckofcards, takencards);
-			//}
-
-
+			var newdeckofcards = DeckOfCardsExtensions.LoadNewDeck();
+			var takencards = new List<PokerCard>();
 
 			foreach (var player in players)
 			{
-				if (player.PlayerName == "Rob")
-				{
-					player.PokerHand.Cards = DeckOfCardsExtensions.LoadPair();
-				}
-
-				if (player.PlayerName == "Jaz")
-				{
-					player.PokerHand.Cards = DeckOfCardsExtensions.LoadStraight();
-				}
-
-				if (player.PlayerName == "Molly")
-				{
-					player.PokerHand.Cards = DeckOfCardsExtensions.LoadFourOfAKind();
-				}
-
-				if (player.PlayerName == "Spencer")
-				{
-					player.PokerHand.Cards = DeckOfCardsExtensions.LoadThreeOfAKind();
-				}
-
-				if (player.PlayerName == "Turner")
-				{
-					player.PokerHand.Cards = DeckOfCardsExtensions.LoadTwoPair();
-				}
-
-				if (player.PlayerName == "Ben")
-				{
-					player.PokerHand.Cards = DeckOfCardsExtensions.LoadStraight();
-				}
+				_GetPlayersPokerHand(player, newdeckofcards, takencards);
 			}
+
+
+
+			//foreach (var player in players)
+			//{
+			//	if (player.PlayerName == "Rob")
+			//	{
+			//		player.PokerHand.Cards = DeckOfCardsExtensions.LoadFullHouse();
+			//	}
+
+			//	if (player.PlayerName == "Jaz")
+			//	{
+			//		player.PokerHand.Cards = DeckOfCardsExtensions.LoadFlush();
+			//	}
+
+			//	if (player.PlayerName == "Molly")
+			//	{
+			//		player.PokerHand.Cards = DeckOfCardsExtensions.LoadFourOfAKind();
+			//	}
+
+			//	if (player.PlayerName == "Spencer")
+			//	{
+			//		player.PokerHand.Cards = DeckOfCardsExtensions.LoadPair();
+			//	}
+
+			//	if (player.PlayerName == "Turner")
+			//	{
+			//		player.PokerHand.Cards = DeckOfCardsExtensions.LoadRoyalFlush();
+
+			//	}
+
+			//	if (player.PlayerName == "Ben")
+			//	{
+			//		player.PokerHand.Cards = DeckOfCardsExtensions.LoadStraightFlush();
+			//	}
+			//}
 
 			//now the cards have been dealt and we know they are unique. now need to decide who has the best hand
 
 
 			foreach (var player in players)
 			{
+
+				//if (player.PlayerName == "Molly")
+				//{
+				//	Console.WriteLine("hey");
+				//}
 				var handtype = _AnalyzeHand(player.PokerHand);
 				player.PokerHand.HandType = handtype;
 

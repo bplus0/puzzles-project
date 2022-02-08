@@ -7,7 +7,20 @@ namespace Puzzles.Bl.Extensions
 	{
 		public static bool IsRoyalFlush(this List<PokerCard> cards)
 		{
-			var orderedcards = cards.OrderBy(x => x.CardValue).ToList();
+			var values = cards.Select(x => x.CardValue).OrderBy(x => x).ToList();
+			var straightflush = cards.IsStraightFlush();
+
+			if (straightflush)
+			{
+				if (values[0] == CardValues.Ten &&
+					values[1] == CardValues.Jack &&
+					values[2] == CardValues.Queen &&
+					values[3] == CardValues.King &&
+					values[4] == CardValues.Ace)
+				{
+					return true;
+				}
+			}
 
 
 			return false;
@@ -16,7 +29,10 @@ namespace Puzzles.Bl.Extensions
 
 		public static bool IsStraightFlush(this List<PokerCard> cards)
 		{
-
+			if (cards.IsFlush() && cards.IsStraight())
+			{
+				return true;
+			}
 			return false;
 		}
 
@@ -25,17 +41,16 @@ namespace Puzzles.Bl.Extensions
 			var values = cards.Select(x => x.CardValue).OrderBy(x => x).ToList();
 
 
-			// we dont care about suit. loop through the values and see if the count of any is TWO. only two
+			//i need to loop through them all.... so need to store a value outside the loop
+			var result = false;
 			foreach (var val in values)
 			{
+				var cardexists = _DoesThisCardExistInTheHandXTimes(val, values, 4);
 
-				return _DoesThisCardExistInTheHandXTimes(val, values, 4);
-				//var count = values.Where(x => x == val).Count();
-
-				//if (count == 4)
-				//{
-				//	return true;
-				//}
+				if (cardexists)
+				{
+					result = true;
+				}
 			}
 			return false;
 		}
@@ -43,12 +58,23 @@ namespace Puzzles.Bl.Extensions
 
 		public static bool IsFullHouse(this List<PokerCard> cards)
 		{
-
+			if (cards.IsPair() && cards.IsThreeOfAKind())
+			{
+				return true;
+			}
 			return false;
 		}
 
 		public static bool IsFlush(this List<PokerCard> cards)
 		{
+			var suits = cards.Select(x => x.CardSuit).OrderBy(x => x).ToList();
+
+			var distinctsuits = suits.Distinct().ToList();
+
+			if (distinctsuits.Count == 1)
+			{
+				return true;
+			}
 
 			return false;
 		}
@@ -73,19 +99,18 @@ namespace Puzzles.Bl.Extensions
 		{
 			var values = cards.Select(x => x.CardValue).OrderBy(x => x).ToList();
 
-
-			// we dont care about suit. loop through the values and see if the count of any is TWO. only two
+			//i need to loop through them all.... so need to store a value outside the loop
+			var result = false;
 			foreach (var val in values)
 			{
-				return _DoesThisCardExistInTheHandXTimes(val, values, 3);
-				//	var count = values.Where(x => x == val).Count();
+				var cardexists = _DoesThisCardExistInTheHandXTimes(val, values, 3);
 
-				//	if (count == 3)
-				//	{
-				//		return true;
-				//	}
+				if (cardexists)
+				{
+					result = true;
+				}
 			}
-			return false;
+			return result;
 		}
 		public static bool IsTwoPair(this List<PokerCard> cards)
 		{

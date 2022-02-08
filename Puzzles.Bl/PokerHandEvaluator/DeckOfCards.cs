@@ -95,7 +95,7 @@ namespace Puzzles.Bl.PokerHandEvaluator
 
 		public static List<PokerCard> LoadPair()
 		{
-			var one = NewCardBySuitByValue(CardSuits.Clubs, CardValues.Four);
+			var one = NewCardBySuitByValue(CardSuits.Clubs, CardValues.Jack);
 			var two = NewCardBySuitByValue(CardSuits.Spades, CardValues.Four);
 			var three = NewCardBySuitByValue(CardSuits.Spades, CardValues.Three);
 			var four = NewCardBySuitByValue(CardSuits.Spades, CardValues.Seven);
@@ -132,11 +132,11 @@ namespace Puzzles.Bl.PokerHandEvaluator
 
 		public static List<PokerCard> LoadThreeOfAKind()
 		{
-			var one = NewCardBySuitByValue(CardSuits.Clubs, CardValues.Two);
-			var two = NewCardBySuitByValue(CardSuits.Hearts, CardValues.Two);
+			var one = NewCardBySuitByValue(CardSuits.Clubs, CardValues.Queen);
+			var two = NewCardBySuitByValue(CardSuits.Hearts, CardValues.Queen);
 			var three = NewCardBySuitByValue(CardSuits.Diamonds, CardValues.Two);
-			var four = NewCardBySuitByValue(CardSuits.Spades, CardValues.King);
-			var five = NewCardBySuitByValue(CardSuits.Hearts, CardValues.Eight);
+			var four = NewCardBySuitByValue(CardSuits.Spades, CardValues.Queen);
+			var five = NewCardBySuitByValue(CardSuits.Hearts, CardValues.Four);
 
 			var result = new List<PokerCard>();
 			result.Add(one);
@@ -164,16 +164,89 @@ namespace Puzzles.Bl.PokerHandEvaluator
 
 			return result;
 		}
+		public static List<PokerCard> LoadFlush()
+		{
+			var one = NewCardBySuitByValue(CardSuits.Spades, CardValues.Four);
+			var two = NewCardBySuitByValue(CardSuits.Spades, CardValues.Five);
+			var three = NewCardBySuitByValue(CardSuits.Spades, CardValues.King);
+			var four = NewCardBySuitByValue(CardSuits.Spades, CardValues.Seven);
+			var five = NewCardBySuitByValue(CardSuits.Spades, CardValues.Ace);
+
+			var result = new List<PokerCard>();
+			result.Add(one);
+			result.Add(two);
+			result.Add(three);
+			result.Add(four);
+			result.Add(five);
+
+			return result;
+		}
 
 
+
+		public static List<PokerCard> LoadStraightFlush()
+		{
+			var one = NewCardBySuitByValue(CardSuits.Hearts, CardValues.Four);
+			var two = NewCardBySuitByValue(CardSuits.Hearts, CardValues.Five);
+			var three = NewCardBySuitByValue(CardSuits.Hearts, CardValues.Six);
+			var four = NewCardBySuitByValue(CardSuits.Hearts, CardValues.Seven);
+			var five = NewCardBySuitByValue(CardSuits.Hearts, CardValues.Eight);
+
+			var result = new List<PokerCard>();
+			result.Add(one);
+			result.Add(two);
+			result.Add(three);
+			result.Add(four);
+			result.Add(five);
+
+			return result;
+		}
+
+		public static List<PokerCard> LoadFullHouse()
+		{
+			var one = NewCardBySuitByValue(CardSuits.Hearts, CardValues.Four);
+			var two = NewCardBySuitByValue(CardSuits.Hearts, CardValues.Four);
+			var three = NewCardBySuitByValue(CardSuits.Hearts, CardValues.Four);
+			var four = NewCardBySuitByValue(CardSuits.Hearts, CardValues.King);
+			var five = NewCardBySuitByValue(CardSuits.Hearts, CardValues.King);
+
+			var result = new List<PokerCard>();
+			result.Add(one);
+			result.Add(two);
+			result.Add(three);
+			result.Add(four);
+			result.Add(five);
+
+			return result;
+		}
 
 		public static List<PokerCard> LoadFourOfAKind()
 		{
 			var one = NewCardBySuitByValue(CardSuits.Clubs, CardValues.King);
 			var two = NewCardBySuitByValue(CardSuits.Hearts, CardValues.King);
 			var three = NewCardBySuitByValue(CardSuits.Diamonds, CardValues.King);
-			var four = NewCardBySuitByValue(CardSuits.Spades, CardValues.King);
-			var five = NewCardBySuitByValue(CardSuits.Hearts, CardValues.Eight);
+			var four = NewCardBySuitByValue(CardSuits.Spades, CardValues.Two);
+			var five = NewCardBySuitByValue(CardSuits.Hearts, CardValues.King);
+
+			var result = new List<PokerCard>();
+			result.Add(one);
+			result.Add(two);
+			result.Add(three);
+			result.Add(four);
+			result.Add(five);
+
+			return result;
+		}
+
+
+
+		public static List<PokerCard> LoadRoyalFlush()
+		{
+			var one = NewCardBySuitByValue(CardSuits.Diamonds, CardValues.Ten);
+			var two = NewCardBySuitByValue(CardSuits.Diamonds, CardValues.Jack);
+			var three = NewCardBySuitByValue(CardSuits.Diamonds, CardValues.Queen);
+			var four = NewCardBySuitByValue(CardSuits.Diamonds, CardValues.King);
+			var five = NewCardBySuitByValue(CardSuits.Diamonds, CardValues.Ace);
 
 			var result = new List<PokerCard>();
 			result.Add(one);
