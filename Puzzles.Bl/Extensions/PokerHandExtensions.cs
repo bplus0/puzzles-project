@@ -22,18 +22,20 @@ namespace Puzzles.Bl.Extensions
 
 		public static bool IsFourOfAKind(this List<PokerCard> cards)
 		{
-			var values = cards.Select(x => x.CardValue).OrderBy(x => x);
+			var values = cards.Select(x => x.CardValue).OrderBy(x => x).ToList();
 
 
 			// we dont care about suit. loop through the values and see if the count of any is TWO. only two
 			foreach (var val in values)
 			{
-				var count = values.Where(x => x == val).Count();
 
-				if (count == 4)
-				{
-					return true;
-				}
+				return _DoesThisCardExistInTheHandXTimes(val, values, 4);
+				//var count = values.Where(x => x == val).Count();
+
+				//if (count == 4)
+				//{
+				//	return true;
+				//}
 			}
 			return false;
 		}
@@ -53,7 +55,14 @@ namespace Puzzles.Bl.Extensions
 
 		public static bool IsStraight(this List<PokerCard> cards)
 		{
-			var values = cards.Select(x => x.CardValue).OrderBy(x => x);
+			var values = cards.Select(x => (int)x.CardValue).OrderBy(x => x).ToList();
+
+			var sequential = values.IsListOfIntsInSequentialOrder();
+
+			if (sequential)
+			{
+				return true;
+			}
 
 			return false;
 		}
@@ -62,18 +71,19 @@ namespace Puzzles.Bl.Extensions
 
 		public static bool IsThreeOfAKind(this List<PokerCard> cards)
 		{
-			var values = cards.Select(x => x.CardValue).OrderBy(x => x);
+			var values = cards.Select(x => x.CardValue).OrderBy(x => x).ToList();
 
 
 			// we dont care about suit. loop through the values and see if the count of any is TWO. only two
 			foreach (var val in values)
 			{
-				var count = values.Where(x => x == val).Count();
+				return _DoesThisCardExistInTheHandXTimes(val, values, 3);
+				//	var count = values.Where(x => x == val).Count();
 
-				if (count == 3)
-				{
-					return true;
-				}
+				//	if (count == 3)
+				//	{
+				//		return true;
+				//	}
 			}
 			return false;
 		}
@@ -87,19 +97,13 @@ namespace Puzzles.Bl.Extensions
 
 			foreach (var val in values)
 			{
-				var exists = _DoesThisCardExistInTheHand(val, values);
+				var exists = _DoesThisCardExistInTheHandXTimes(val, values, 2);
 
 				if (exists)
 				{
 					pairlist.Add(val);
 				}
-				//var count = values.Where(x => x == val).Count();
 
-				//if (count == 2)
-				//{
-				//	pairlist.Add(val);
-
-				//}
 			}
 
 
@@ -121,19 +125,14 @@ namespace Puzzles.Bl.Extensions
 			// we dont care about suit. loop through the values and see if the count of any is TWO. only two
 			foreach (var val in values)
 			{
-				var exists = _DoesThisCardExistInTheHand(val, values);
+				var exists = _DoesThisCardExistInTheHandXTimes(val, values, 2);
 
 				if (exists)
 				{
 					return true;
 				}
 
-				//var count = values.Where(x => x == val).Count();
 
-				//if (count == 2)
-				//{
-				//	return true;
-				//}
 			}
 
 
@@ -142,11 +141,11 @@ namespace Puzzles.Bl.Extensions
 
 
 
-		private static bool _DoesThisCardExistInTheHand(CardValues value, List<CardValues> cards)
+		private static bool _DoesThisCardExistInTheHandXTimes(CardValues value, List<CardValues> cards, int listcount)
 		{
-			var count = cards.Where(x => x == value).Count();
+			var certainCardCount = cards.Where(x => x == value).Count();
 
-			if (count == 2)
+			if (certainCardCount == listcount)
 			{
 				return true;
 			}

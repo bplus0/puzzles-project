@@ -7,5 +7,7 @@ namespace Puzzles.Bl.PokerHandEvaluator.Models
 		public List<PokerCard> Cards { get; set; } = new List<PokerCard>();
 
 		public AvailablePokerHands HandType { get; set; }
+
+		public string HighCardString { get; set; }
 	}
 }

@@ -2,11 +2,11 @@
 
 namespace Puzzles.Bl.PokerHandEvaluator.Models
 {
-  public class PokerCard
-  {
-    public CardSuits CardSuit { get; set; }
-    public CardValues CardValue { get; set; }
+	public class PokerCard
+	{
+		public CardSuits CardSuit { get; set; }
+		public CardValues CardValue { get; set; }
 
-    public string UniqueKey => $"{CardSuit}{CardValue}";
-  }
+		public string UniqueKey => $"{CardValue}{CardSuit}";
+	}
 }
