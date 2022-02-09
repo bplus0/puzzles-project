@@ -6,5 +6,7 @@
 		public PokerHandModel PokerHand { get; set; } = new PokerHandModel();
 		public bool WinningHand { get; set; } = false;
 
+		public PokerCard HighestCardInWinningHand { get; set; }
+
 	}
 }

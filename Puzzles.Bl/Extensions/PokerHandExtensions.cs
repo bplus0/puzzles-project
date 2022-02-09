@@ -164,6 +164,38 @@ namespace Puzzles.Bl.Extensions
 			return false;
 		}
 
+		public static bool IsCardUsedInPair(this PokerCard card, List<PokerCard> cards)
+		{
+
+			var result = false;
+
+			var iscardusedinpair = _DoesThisCardExistInTheHandXTimes(card.CardValue,
+																cards.Select(x => x.CardValue).ToList(), 2);
+
+			if (iscardusedinpair)
+			{
+				result = true;
+			}
+
+			return result;
+		}
+
+
+		public static bool IsCardUsedInThreeOfAKind(this PokerCard card, List<PokerCard> cards)
+		{
+
+			var result = false;
+
+			var iscardusedinpair = _DoesThisCardExistInTheHandXTimes(card.CardValue,
+																cards.Select(x => x.CardValue).ToList(), 3);
+
+			if (iscardusedinpair)
+			{
+				result = true;
+			}
+
+			return result;
+		}
 
 
 		private static bool _DoesThisCardExistInTheHandXTimes(CardValues value, List<CardValues> cards, int listcount)
@@ -178,6 +210,31 @@ namespace Puzzles.Bl.Extensions
 			return false;
 		}
 
+
+
+
+		//NOt gonna use rn
+		//public static List<PokerPlayerModel> PlayersHandsInOrder(this List<PokerPlayerModel> players)
+		//{
+		//	if (players == null)
+		//	{
+		//		return new List<PokerPlayerModel>();
+		//	}
+
+
+		//	players = players.OrderByDescending(x => x.PokerHand.HandType).ToList();
+		//	return players;
+
+		//}
+
+
+
+		public static PokerCard HighestCard(this List<PokerCard> cards)
+		{
+			var highestcardvalue = cards.Max(x => x.CardValue);
+			var highcard = cards.FirstOrDefault(x => x.CardValue == highestcardvalue);
+			return highcard;
+		}
 
 
 	}

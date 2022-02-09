@@ -16,6 +16,9 @@
     <div class="card" style="width: 18rem;">
 
         <div class="card-body">
+            @if(Model.WinningHand){
+                <h1>Winner!</h1>
+            }
             <h5 class="card-title">@Model.PlayerName</h5>
             @foreach (var c in Model.PokerHand.Cards)
             {
@@ -47,3 +50,14 @@
 
 </div>
 
+
+ <script>
+        $("document").ready(function() {
+          
+        }); // Doc Ready
+
+
+        function ShowWinner(){
+         
+        }
+</script>
