@@ -27,5 +27,23 @@
 			return isSequential;
 			//return myList.SequenceEqual(Enumerable.Range(myList.First(), myList.Last()));
 		}
+
+
+
+		public static int lonelyinteger(List<int> numberslist)
+		{
+			foreach (var num in numberslist)
+			{
+				var count = numberslist.Where(x => x == num).ToList();
+
+				if (count.Count == 1)
+				{
+					return num;
+				}
+			}
+			return 0;
+		}
+
+
 	}
 }
