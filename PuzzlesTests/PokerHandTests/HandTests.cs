@@ -49,7 +49,7 @@ namespace PuzzlesTests.PokerHandTests
 			cards.Add(new PokerCard(CardSuits.Spades, CardValues.Four));
 
 			//assert
-			Assert.True(cards.IsFourOfAKind());
+			Assert.True(cards.IsFullHouse());
 		}
 	}
 }
